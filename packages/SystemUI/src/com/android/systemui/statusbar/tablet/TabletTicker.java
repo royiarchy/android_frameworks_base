@@ -109,7 +109,7 @@ public class TabletTicker
         }
 
         if (isDisabled()) {
-            mEvent.updateTicker(notification, notification.notification.tickerText.toString());
+            mEvent.updateTicker(notification, notification.getNotification().tickerText.toString());
             return;
         }
 

@@ -452,6 +452,7 @@ public class TabletStatusBar extends BaseStatusBar implements
 
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
         // detect theme change.
         CustomTheme newTheme = mContext.getResources().getConfiguration().customTheme;
         if (newTheme != null &&
@@ -459,6 +460,7 @@ public class TabletStatusBar extends BaseStatusBar implements
             mCurrentTheme = (CustomTheme)newTheme.clone();
             recreateStatusBar();
         }
+
         loadDimens();
         mNotificationPanelParams.height = getNotificationPanelHeight();
         mWindowManager.updateViewLayout(mNotificationPanel, mNotificationPanelParams);
@@ -1068,7 +1070,7 @@ public class TabletStatusBar extends BaseStatusBar implements
         // until status bar window is attached to the window manager,
         // because...  well, what's the point otherwise?  And trying to
         // run a ticker without being attached will crash!
-         if (n.notification.tickerText != null && mStatusBarView.getWindowToken() != null) {
+        if (hasTicker(n.getNotification()) && mStatusBarView.getWindowToken() != null) {
             if (0 == (mDisabled & (StatusBarManager.DISABLE_NOTIFICATION_ICONS
                             | StatusBarManager.DISABLE_NOTIFICATION_TICKER))) {
                 mTabletTicker.add(key, n);
@@ -1504,7 +1506,7 @@ public class TabletStatusBar extends BaseStatusBar implements
         for (int i=0; toShow.size()< maxNotificationIconsCount; i++) {
             if (i >= N) break;
             Entry ent = mNotificationData.get(N-i-1);
-            if ((provisioned && ent.notification.score >= HIDE_ICONS_BELOW_SCORE)
+            if ((provisioned && ent.notification.getScore() >= HIDE_ICONS_BELOW_SCORE)
                     || showNotificationEvenIfUnprovisioned(ent.notification) || mHaloTaskerActive) {
                 toShow.add(ent.icon);
             }

@@ -427,7 +427,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
 
     public void setStatusBar(BaseStatusBar bar) {
         mBar = bar;
-        if(ExtendedPropertiesUtils.isTablet()) {
+        if(ExtendedPropertiesUtils.isTablet(mContext)) {
             if (mBar.getTabletTicker() != null) mBar.getTabletTicker().setUpdateEvent(this);
         } else {
             if (mBar.getTicker() != null) mBar.getTicker().setUpdateEvent(this);
@@ -871,7 +871,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
         mEffect.unscheduleSleep();
         mHandler.removeCallbacksAndMessages(null);
         // Kill callback
-        if(ExtendedPropertiesUtils.isTablet()) {
+        if(ExtendedPropertiesUtils.isTablet(mContext)) {
             if (mBar.getTabletTicker() != null) mBar.getTabletTicker().setUpdateEvent(null);
         } else {
              mBar.getTicker().setUpdateEvent(null);

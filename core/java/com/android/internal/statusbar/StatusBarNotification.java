@@ -146,4 +146,57 @@ public class StatusBarNotification implements Parcelable {
     public int getUserId() {
         return this.user.getIdentifier();
     }
+
+    /** The package of the app that posted the notification.
+     * @hide
+     */
+    public String getPackageName() {
+        return pkg;
+    }
+
+    /** The id supplied to {@link android.app.NotificationManager#notify(int,Notification)}.
+     * @hide
+     */
+    public int getId() {
+        return id;
+    }
+
+    /** The tag supplied to {@link android.app.NotificationManager#notify(int,Notification)},
+     * or null if no tag was specified.
+     * @hide
+     */
+    public String getTag() {
+        return tag;
+    }
+
+    /** The notifying app's calling uid. @hide */
+    public int getUid() {
+        return uid;
+    }
+
+    /** @hide */
+    public int getInitialPid() {
+        return initialPid;
+    }
+
+    /** The {@link android.app.Notification} supplied to
+     * {@link android.app.NotificationManager#notify(int,Notification)}.
+     * @hide
+     */
+    public Notification getNotification() {
+        return notification;
+    }
+
+    /**
+     * The {@link android.os.UserHandle} for whom this notification is intended.
+     * @hide
+     */
+    public UserHandle getUser() {
+        return user;
+    }
+
+    /** @hide */
+    public int getScore() {
+        return score;
+    }
 }

@@ -4163,6 +4163,7 @@ public class Activity extends ContextThemeWrapper
         }
     }
 
+    /** @hide */
     public void finishFloating() {
         mMainThread.performFinishFloating();
     }

@@ -19,6 +19,7 @@ package android.app;
 import android.app.Activity;
 import android.os.Bundle;
 
+/** @hide */
 public class LayerActivity extends Activity {
 
     private Bundle mSavedInstanceState;
